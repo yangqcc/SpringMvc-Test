@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.temporal.TemporalField;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -37,14 +41,23 @@ public class AppointmentsController {
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> manyUsersXml() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 2017);
+        calendar.set(Calendar.MONTH, 3);
+        calendar.set(Calendar.DAY_OF_MONTH, 10);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 40);
+        calendar.set(Calendar.SECOND, 10);
         List<User> userList = new ArrayList<>(1000);
         for (int i = 0; i < 100000; i++) {
             userList.add(new User("yangqc" + i, i, "dog" + i));
         }
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json;charset=utf-8");
+        System.out.println("yes，fuck me!");
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.maxAge(1, TimeUnit.MINUTES))
+                .lastModified(new Date().getTime())
                 .headers(headers)
                 .body(userList);
     }
@@ -57,8 +70,11 @@ public class AppointmentsController {
         }
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json;charset=utf-8");
+        System.out.println("yes,fuck me ***2***!");
         return ResponseEntity.ok()
                 .headers(headers)
+                .cacheControl(CacheControl.maxAge(1, TimeUnit.MINUTES))
+                .lastModified(new Date().getTime())
                 .body(userList);
     }
 
