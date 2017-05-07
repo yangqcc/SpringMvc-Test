@@ -10,12 +10,14 @@ import java.io.IOException;
 /**
  * Created by yangqc on 2017/4/12.
  */
-@WebServlet(name = "myServlet",urlPatterns = "/myServlet")
+@WebServlet(name = "myServlet", urlPatterns = "/myServlet")
 public class MyServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-        System.out.println(this.getServletContext().getAttribute("myData"));
-    }
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println(this.getServletContext().getAttribute("myData"));
+		resp.getOutputStream().print("this is yangqc!");
+	}
 
 }

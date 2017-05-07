@@ -8,4 +8,7 @@
 out
 gen
 target
+.settings
+.tomcatplugin
+.project
 
