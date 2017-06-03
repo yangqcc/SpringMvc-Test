@@ -41,8 +41,8 @@ public class AspectTest {
     }
 
     public static void main(String[] args) {
-        ApplicationContext annotationContext = new ClassPathXmlApplicationContext("application.xml");
-        TestBean test = (TestBean) annotationContext.getBean("test");
+        ApplicationContext annotationContext = new AnnotationConfigApplicationContext(AopAutoConfiguration.class);
+        TestBean test = (TestBean) annotationContext.getBean("testBean");
         test.test();
     }
 }
