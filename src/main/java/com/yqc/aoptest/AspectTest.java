@@ -1,6 +1,6 @@
 package com.yqc.aoptest;
 
-import com.yqc.controller.AopAutoConfiguration;
+import com.yqc.config.AopAutoConfiguration;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.context.ApplicationContext;

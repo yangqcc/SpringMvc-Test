@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yqc.controller;
+package com.yqc.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * 拷贝自springboot
  */
 @Configuration
-@ComponentScan(basePackages = "com.yqc.aoptest")
+@ComponentScan(basePackages = {"com.yqc.aoptest","com.yqc.controller","com.yqc.entity","com.yqc.service"})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AopAutoConfiguration {
 

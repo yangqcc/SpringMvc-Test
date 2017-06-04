@@ -32,6 +32,7 @@ public class AppointmentsController {
 
     @RequestMapping("/index")
     public String index() {
+        appointmentBook.showName();
         testBean.test();
         return "demo";
     }
