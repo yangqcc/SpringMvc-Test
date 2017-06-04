@@ -19,6 +19,7 @@ package com.yqc.config;
 import com.yqc.conditionannotationtest.*;
 import com.yqc.service.TestService;
 import org.springframework.context.annotation.*;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * 拷贝自springboot
@@ -35,7 +36,7 @@ public class AopAutoConfiguration {
     }
 
     @Bean(name = "service")
-    @Conditional(WindowsCondition.class)
+    @Conditional(WindowsCondition.class) //里面的类型必须实现Condition接口
     public ListService windowsListService() {
         return new WindowListService();
     }
@@ -44,5 +45,15 @@ public class AopAutoConfiguration {
     @Conditional(LinuxCondition.class)
     public ListService linuxListService() {
         return new LinuxListService();
+    }
+
+    /**
+     * 定义视图解析器
+     *
+     * @return
+     */
+    @Bean
+    public org.springframework.web.servlet.view.InternalResourceViewResolver getResolver() {
+        return new InternalResourceViewResolver("/WEB-INF/view/", ".jsp");
     }
 }
