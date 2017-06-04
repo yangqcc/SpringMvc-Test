@@ -16,16 +16,33 @@
 
 package com.yqc.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import com.yqc.conditionannotationtest.*;
+import com.yqc.service.TestService;
+import org.springframework.context.annotation.*;
 
 /**
  * 拷贝自springboot
  */
 @Configuration
-@ComponentScan(basePackages = {"com.yqc.aoptest","com.yqc.controller","com.yqc.entity","com.yqc.service"})
+@ComponentScan(basePackages = {"com.yqc.aoptest", "com.yqc.controller", "com.yqc.entity", "com.yqc.service"})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AopAutoConfiguration {
 
+    @Bean(name = "testService")
+    public TestService getTestService() {
+        System.out.println("initTestService");
+        return new TestService();
+    }
+
+    @Bean(name = "service")
+    @Conditional(WindowsCondition.class)
+    public ListService windowsListService() {
+        return new WindowListService();
+    }
+
+    @Bean(name = "service")
+    @Conditional(LinuxCondition.class)
+    public ListService linuxListService() {
+        return new LinuxListService();
+    }
 }

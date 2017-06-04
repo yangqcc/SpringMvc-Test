@@ -1,6 +1,7 @@
 package com.yqc.aoptest;
 
 import com.yqc.config.AopAutoConfiguration;
+import com.yqc.service.TestService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.context.ApplicationContext;
@@ -43,6 +44,8 @@ public class AspectTest {
     public static void main(String[] args) {
         ApplicationContext annotationContext = new AnnotationConfigApplicationContext(AopAutoConfiguration.class);
         TestBean test = (TestBean) annotationContext.getBean("testBean");
+        TestService testService = (TestService) annotationContext.getBean("testService");
         test.test();
+        System.out.println(testService.getName());
     }
 }
