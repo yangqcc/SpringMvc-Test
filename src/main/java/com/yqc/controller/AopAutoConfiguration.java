@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yqc.aoptest;
+package com.yqc.controller;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

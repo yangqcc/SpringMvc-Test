@@ -1,5 +1,6 @@
 package com.yqc.controller;
 
+import com.yqc.aoptest.TestBean;
 import com.yqc.entity.User;
 import com.yqc.service.AppointmentBook;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,15 +24,15 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping
 public class AppointmentsController {
 
-    private final AppointmentBook appointmentBook;
+    @Autowired
+    private AppointmentBook appointmentBook;
 
     @Autowired
-    public AppointmentsController(AppointmentBook appointmentBook) {
-        this.appointmentBook = appointmentBook;
-    }
+    private TestBean testBean;
 
     @RequestMapping("/index")
     public String index() {
+        testBean.test();
         return "demo";
     }
 
