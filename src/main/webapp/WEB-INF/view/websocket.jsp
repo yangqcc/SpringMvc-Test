@@ -12,13 +12,13 @@
 <script type="text/javascript">
     var websocket = null;
     if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://localhost:8080/springmvc/websocket/socketServer.do");
+        websocket = new WebSocket("ws://localhost:8080/springmvc/websocketcommect");
     }
     else if ('MozWebSocket' in window) {
-        websocket = new MozWebSocket("ws://localhost:8080/springmvc/websocket/socketServer.do");
+        websocket = new MozWebSocket("ws://localhost:8080/springmvc/websocketcommect");
     }
     else {
-        websocket = new SockJS("http://localhost:8080/springmvc/sockjs/socketServer.do");
+        websocket = new SockJS("http://localhost:8080/springmvc/sockjs/websocketcommect");
     }
     websocket.onopen = onOpen;
     websocket.onmessage = onMessage;
@@ -61,7 +61,7 @@
     //TODO
     function doSend2() {
         //实现化WebSocket对象，指定要连接的服务器地址与端口
-        socket = new WebSocket("ws://localhost:8080/springmvc/websocket/socketServer.do");
+        socket = new WebSocket("ws://localhost:8080/springmvc/websocketcommect");
         //打开事件
         socket.onopen = function() {
             alert("Socket 已打开");

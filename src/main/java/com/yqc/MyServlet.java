@@ -8,16 +8,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by yangqc on 2017/4/12.
+ *
+ * @author yangqc
+ * @date 2017/4/12
  */
 @WebServlet(name = "myServlet", urlPatterns = "/myServlet")
 public class MyServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println(this.getServletContext().getAttribute("myData"));
-		resp.getOutputStream().print("this is yangqc!");
+		resp.getOutputStream().print("this is servlet!");
 	}
 
 }

@@ -6,7 +6,9 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 /**
- * Created by yangqc on 2017/4/12.
+ *
+ * @author yangqc
+ * @date 2017/4/12
  */
 @WebListener
 public class MyDataContextListener implements ServletContextListener {
